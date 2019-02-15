@@ -1,0 +1,16 @@
+.recipes-dashboard {
+  &-row {
+    &:nth-child(1) {
+      border-bottom: 1px solid #2ecc71;
+      .section:nth-child(1) {
+        border-right: 1px solid #2ecc71;
+      }
+    }
+
+    &:nth-child(2) {
+      .section:nth-child(1) {
+        border-right: 1px solid #2ecc71;
+      }
+    }
+  }
+}

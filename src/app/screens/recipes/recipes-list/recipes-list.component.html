@@ -1,0 +1,76 @@
+<div *ngIf="pageLoading" fxFlexFill fxLayoutAlign="center center">
+  <mat-spinner color="accent"></mat-spinner>
+</div>
+
+<div *ngIf="!selectedRecipe && !pageLoading" class="list-container" fxLayout="column" 
+  fxFlexFill>
+  <mat-form-field fxFlex="50px" class="m-2">
+    <input autocomplete="off" (input)="searchRecipes(searchString.toLowerCase())" matInput type="text" placeholder="search..."
+      [(ngModel)]="searchString">
+    <button mat-button *ngIf="searchString" matSuffix mat-icon-button aria-label="Clear" (click)="searchString=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div fxFlex *ngIf="query !== 'allRecipesFromSaved'">
+    <mat-card class="m-2 list-item" *ngFor="let item of filteredRecipes; let index = index">
+      <div fxFlex fxLayout="row" fxLayoutAlign="start center">{{ item.title }}</div>
+      <button (click)="selectedRecipe = item" mat-mini-fab class="stored-color" style="color:white"><i class="fa fa-info"></i></button>
+    </mat-card>
+  </div>
+
+
+  <div fxFlex *ngIf="query === 'allRecipesFromSaved'">
+    <mat-card appSwipeOff [options]="{ swipeEnabled: !selectedRecipe }" (end)="end($event, item,index)" class="m-2 list-item"
+      *ngFor="let item of filteredRecipes; let index = index">
+      <div fxFlex fxLayout="row" fxLayoutAlign="start center">{{ item.title }}</div>
+
+      <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="5px">
+        <button (click)="end({swipedOff:true, swipeDirection:'right'}, item,index)" class="list-item" mat-mini-fab
+          color="warn"><i class="fa fa-times"></i></button>
+        <button (click)="selectedRecipe = item" mat-mini-fab class="stored-color" style="color:white"><i class="fa fa-info"></i></button>
+        <button *ngIf="item.numberOfMissingItems === 0" (click)=" completeRecipe(item)" mat-mini-fab><i class="fa fa-check"></i></button>
+      </div>
+    </mat-card>
+  </div>
+</div>
+
+<div *ngIf="selectedRecipe && !pageLoading" fxLayout="column" fxFlexFill fxLayoutAlign="center center">
+  <mat-card *ngIf="selectedRecipe && !pageLoading" fxLayout="column" class="card-full-size">
+    <mat-card-header fxFlex fxLayout="row" fxLayoutAlign="center center">
+      <mat-card-title>{{selectedRecipe.title }}</mat-card-title>
+    </mat-card-header>
+
+    <img *ngIf="selectedRecipe && !viewRecipeInfo" [src]="'assets/' + selectedRecipe.src" mat-card-image />
+
+    <mat-card-content fxFlex *ngIf="selectedRecipe && viewRecipeInfo">
+      <p>
+        {{ selectedRecipe.steps[stepNum].description }}
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions *ngIf="selectedRecipe && !viewRecipeInfo" [ngClass]="!selectedRecipe && recipe.swipedOff && 'opacity-zero'"
+      fxFlex="100px" fxLayout="row" fxLayoutAlign="space-around center">
+      <button fxLayout fxLayoutAlign="center center" mat-fab color="primary" (click)="selectedRecipe = false;" class="">
+        <span class="fa fa-undo"></span>
+      </button>
+      <button fxLayout fxLayoutAlign="center center" mat-fab (click)="viewRecipe(selectedRecipe)" class="stored-color">
+        <span style="font-size:20px;" class="fa fa-info"></span>
+      </button>
+    </mat-card-actions>
+
+    <mat-card-actions *ngIf="selectedRecipe && viewRecipeInfo" fxFlex="100px" fxLayout="row" fxLayoutAlign="space-around center">
+      <button fxLayout fxLayoutAlign="center center" mat-fab color="accent" (click)="stepNum = 0" class="">
+        <span class="fa fa-arrow-left"></span>
+      </button>
+      <button fxLayout fxLayoutAlign="center center" mat-fab color="primary" (click)="viewRecipeInfo = false;" class="">
+        <span class="fa fa-undo"></span>
+      </button>
+      <button fxLayout fxLayoutAlign="center center" mat-fab color="accent" (click)="stepNum = 1" class="">
+        <span class="fa fa-arrow-right"></span>
+      </button>
+    </mat-card-actions>
+
+  </mat-card>
+
+</div>

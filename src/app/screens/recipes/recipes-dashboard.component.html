@@ -1,0 +1,25 @@
+<div class="recipes-dashboard-container" fxLayout="column" fxFlexFill>
+
+  <div fxFlex="50" fxLayout="row" class="recipes-dashboard-row">
+    <div class="section" fxFlex fxLayout="column" fxLayoutAlign="center center" (click)="gotToNextScreen('recipesList','allRecipesFromStored')">
+      <i height="60" class="fa fa-utensils" style="font-size:60px; color:#2ecc71;"></i>
+      <h5 class="mt-2">all recipes list</h5>
+    </div>
+    <div fxFlex fxLayout="column" fxLayoutAlign="center center">
+      <i height="60" class="fa fa-star" style="font-size:60px; color:#2ecc71;" (click)="gotToNextScreen('recipesList','allRecipesFromSaved')"></i>
+      <h5 class="mt-2">saved recipes</h5>
+    </div>
+  </div>
+
+  <div fxFlex="50" fxLayout="row" class="recipes-dashboard-row">
+    <div class="section" fxFlex fxLayout="column" fxLayoutAlign="center center" (click)="gotToNextScreen('recipeSwipe','recipesFromStored')">
+      <i height="60" class="fa fa-save" style="font-size:60px; color:#2ecc71;"></i>
+      <h5 class="mt-2">from stored items</h5>
+    </div>
+    <div fxFlex fxLayout="column" fxLayoutAlign="center center" (click)="gotToNextScreen('recipeSwipe','recipesFromPotluck')">
+      <i height="60" class="fa fa-random" style="font-size:60px; color:#2ecc71;"></i>
+      <h5 class="mt-2">potluck</h5>
+    </div>
+  </div>
+
+</div>

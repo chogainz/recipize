@@ -1,0 +1,19 @@
+<app-slide-panel style="overflow-y:scroll;" [activePane]="screenState.panelSideVisible">
+  <div leftPane fxFlex>
+    <!-- <app-login></app-login> -->
+    <app-choices *ngIf="screenState.panels.left === 'choices'"></app-choices>
+  </div>
+
+  <div middlePane fxFlex>
+    <app-scan *ngIf="screenState.panels.middle === 'scan'"></app-scan>
+    <app-list *ngIf="screenState.panels.middle === 'list'"></app-list>
+    <app-recipes-dashboard *ngIf="screenState.panels.middle === 'recipesDashboard'"></app-recipes-dashboard>
+    <app-stored-dashboard *ngIf="screenState.panels.middle === 'storedDashboard'"></app-stored-dashboard>
+  </div>
+
+  <div rightPane fxFlex>
+    <app-recipes *ngIf="screenState.panels.right === 'recipeSwipe'"></app-recipes>
+    <app-stored *ngIf="screenState.panels.right === 'stored'"></app-stored>
+    <app-recipes-list *ngIf="screenState.panels.right === 'recipesList'"></app-recipes-list>
+  </div>
+</app-slide-panel>

@@ -1,0 +1,25 @@
+<div fxLayout="column" fxFlexFill>
+  <div fxFlex="50" fxLayout="row">
+    <div fxFlex fxLayout="column" fxLayoutAlign="center center" (click)="gotToNextScreen('scan')" class="scan-color">
+      <img src="assets/images/barcode.png" height="75" />
+      <h5 class="mt-2">scan</h5>
+    </div>
+    <div fxFlex fxLayout="column" fxLayoutAlign="center center" (click)="gotToNextScreen('list')" class="list-color">
+      <i height="60" class="fa fa-list-alt" style="font-size:60px; color:white;"></i>
+      <h5 class="mt-2">shopping list</h5>
+    </div>
+  </div>
+
+  <div fxFlex="50" fxLayout="row">
+    <div fxFlex fxLayout="column" fxLayoutAlign="center center" (click)="gotToNextScreen('recipesDashboard')"
+      class="recipes-color">
+      <i height="60" class="fa fa-utensils" style="font-size:60px; color:white;"></i>
+      <h5 class="mt-2">recipes</h5>
+    </div>
+    <div fxFlex fxLayout="column" fxLayoutAlign="center center" (click)="gotToNextScreen('storedDashboard')"
+      class="stored-color">
+      <i height="60" class="fa fa-save" style="font-size:60px; color:white;"></i>
+      <h5 class="mt-2">stored</h5>
+    </div>
+  </div>
+</div>

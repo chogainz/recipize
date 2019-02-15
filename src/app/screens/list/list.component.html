@@ -1,0 +1,15 @@
+<div *ngIf="pageLoading" fxFlexFill fxLayoutAlign="center center">
+  <mat-spinner color="accent"></mat-spinner>
+</div>
+
+<div *ngIf="!pageLoading" class="list-container">
+  <mat-card fxLayout="row" fxLayoutAlign="space-around center" *ngFor="let item of list; let index = index" class="m-2 list-item"
+    appSwipeOff (end)="removeListItem($event,item)">
+    <div fxFlex>{{ item.title }}</div>
+    <div fxFlex fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="5px">
+      <button (click)="updateQuantity(item,'remove')" class="fa fa-minus default-round-btn mini-btn list-color"></button>
+      <div>{{ item.quantity }}</div>
+      <button (click)="updateQuantity(item,'add')" class="fa fa-plus default-round-btn mini-btn list-color"></button>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,18 @@
+<div fxLayout="column" fxLayoutAlign="space-between stretch" style="width: 100%;">
+  <div class="mb-2" fxLayout="row" fxLayoutAlign="space-between center">
+    <h5> Item found</h5>
+    <mat-icon (click)="closeDialog()">close</mat-icon>
+  </div>
+
+  <div class="mb-2">
+    <p>
+      Where would you like to save this item?
+    </p>
+  </div>
+
+
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <button mat-raised-button color="accent" (click)="closeDialog('list')">shopping list</button>
+    <button mat-raised-button color="accent" (click)="closeDialog('stored')">stored</button>
+  </div>
+</div>

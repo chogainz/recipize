@@ -1,0 +1,16 @@
+<div *ngIf="pageLoading" fxFlexFill fxLayoutAlign="center center">
+  <mat-spinner color="accent"></mat-spinner>
+</div>
+
+<div *ngIf="!pageLoading" class="stored-item-container">
+  <mat-card fxLayout="row" fxLayoutAlign="space-around center" *ngFor="let item of stored" class="m-2 list-item"
+    appSwipeOff (end)="removeStoredItem($event,item)">
+    <div class="ml-2" fxFlex>{{ item.title }}</div>
+    <div class="mr-2" fxFlex fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="5px">
+      <button (click)="updateQuantity(item,'remove')" class="fa fa-minus default-round-btn mini-btn stored-color"></button>
+      <div>{{ item.quantity }}</div>
+      <button (click)="updateQuantity(item,'add')" class="fa fa-plus default-round-btn mini-btn stored-color"></button>
+    </div>
+  </mat-card>
+
+</div>

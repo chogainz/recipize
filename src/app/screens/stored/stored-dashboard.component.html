@@ -1,0 +1,36 @@
+<div class="stored-dashboard-container" fxLayout="column" fxFlexFill>
+
+  <div fxFlex="50" fxLayout="row" class="stored-dashboard-row">
+    <div class="section" fxFlex fxLayout="column" fxLayoutAlign="center center" (click)="gotToNextScreen('fresh_chilled')">
+      <img src="assets/images/fresh-chilled.png" height="75" />
+      <h5 class="mt-2">fresh and chilled</h5>
+    </div>
+    <div fxFlex fxLayout="column" fxLayoutAlign="center center" (click)="gotToNextScreen('frozen')">
+      <img src="assets/images/frozen-food.png" height="75" />
+      <h5 class="mt-2">frozen</h5>
+    </div>
+  </div>
+
+  <div fxFlex="50" fxLayout="row" class="stored-dashboard-row">
+    <div class="section" fxFlex fxLayout="column" fxLayoutAlign="center center" (click)="gotToNextScreen('food_cupboard')">
+      <img src="assets/images/cupboard.png" height="75" />
+      <h5 class="mt-2">food cupboard</h5>
+    </div>
+    <div fxFlex fxLayout="column" fxLayoutAlign="center center" (click)="gotToNextScreen('bread_cakes')">
+      <img src="assets/images/breads.png" height="75" />
+      <h5 class="mt-2">bread and cakes</h5>
+    </div>
+  </div>
+
+  <div fxFlex="50" fxLayout="row" class="stored-dashboard-row">
+    <div class="section" fxFlex fxLayout="column" fxLayoutAlign="center center" (click)="gotToNextScreen('drinks')">
+      <img src="assets/images/drinks.png" height="75" />
+      <h5 class="mt-2">drinks</h5>
+    </div>
+    <div fxFlex fxLayout="column" fxLayoutAlign="center center" (click)="gotToNextScreen('other')">
+      <img src="assets/images/misc.png" height="75" />
+      <h5 class="mt-2">other</h5>
+    </div>
+  </div>
+
+</div>

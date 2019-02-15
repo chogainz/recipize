@@ -1,0 +1,14 @@
+<div class="panes" fxFlexFill fxLayout="row" [@slide]="activePane" (@slide.done)="animationDone($event)">
+  <div style="width: 100%">
+    <ng-content select="[leftPane]"></ng-content>
+  </div>
+  <div style="width: 100%">
+    <ng-content select="[middlePane]"></ng-content>
+  </div>
+  <div style="width: 100%">
+    <ng-content select="[rightPane]"></ng-content>
+  </div>
+<div style="width: 100%">
+  <ng-content select="[lastPane]"></ng-content>
+</div>
+</div>
